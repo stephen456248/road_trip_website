@@ -1,0 +1,13 @@
+<style type="text/css">
+	.city-input{
+		margin-bottom: 10px;
+	}
+</style>
+
+<h1>City Weather Input</h1>
+<%= form_tag do %>
+  <div id="form-inputs">
+   <%= label_tag "City:" %><%= text_field_tag :city, nil, class: "city-input" %><br>
+  </div>
+  <%= submit_tag "Search" %>
+<% end %>

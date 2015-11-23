@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Road Trip</title>
+  <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id='header_div'>
+  	<%= link_to_unless_current "Home Page", root_path %>
+    <%= link_to_unless_current "Weather Input", weather_path %>
+   	<%= link_to_unless_current "Roads", roads_path %>
+   	<%= link_to_unless_current "Cams", cams_path %>
+   	<%= link_to_unless_current "Display", output_path %>
+   	<%= link_to "Clear Data", destroy_session_path %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

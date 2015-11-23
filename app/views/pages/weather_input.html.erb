@@ -1,0 +1,21 @@
+weather input here!
+<ul>
+<% session[:weather][:highs].each do |temp| %>
+  <li><%= temp %></li>
+<% end %>
+</ul>
+
+<ul>
+<% session[:weather][:lows].each do |temp| %>
+	<li><%= temp %></li>
+<% end %>
+
+
+
+<pre>
+<%= JSON.pretty_generate(@data).html_safe %>
+</pre>
+<hr>
+<pre>
+<%= JSON.pretty_generate(@geo).html_safe %>
+</pre>

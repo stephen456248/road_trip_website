@@ -1,0 +1,42 @@
+
+<style type="text/css">
+
+.text_box{
+	height: 200;
+	width: 200;
+	float:left;
+	background:white;
+	border: 2px solid black;
+	margin-left: 10px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	resize: both;s
+	display: inline-block;
+}
+
+</style>
+
+<img src="/images/snowy.jpg" >
+
+<ul>
+<li><%= link_to "Weather", weather_path %></li><br>
+<li><%= link_to "Roads", roads_path %></li><br>
+<li><%= link_to "Cams", cams_path %></li><br>
+<li><%= link_to "Output", output_path %><br>
+</ul>
+
+<div class='text_box'>
+	
+	To create your personal report on weather and road conditions begin by selecting
+	Weather or Roads from the above links. You can select weather reports for up to 4 cities. <br><br>
+
+	For roads a total of four roads can be selected.<br><br>
+
+	If a fifth item is selected from either Roads or Weather the oldest weather report or road report will be dropped.<br><br>
+
+	For the road cams the link will take you directly to the Caltrans web cam page. From there you can select one cam at a time and view its image. This data is not retained.
+
+	
+
+</div>
