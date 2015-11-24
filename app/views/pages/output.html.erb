@@ -3,91 +3,91 @@
 <style type="text/css">
 
 .base_div{
-	opacity:0.8;
-	background-color:#ccc;
-	position:relative;
-	width:950px;
-	height:100%;
-	top:0px;
-	left:0px;
-	z-index:1000;
-	overflow: scroll;
-	
+  opacity:0.8;
+  background-color:#ccc;
+  position:relative;
+  width:950px;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index:1000;
+  overflow: scroll;
+  
 }
 
 .header_div{
-	width: 950;
-	height: 400;
-	border: 2px;
-	position: fixed;
-	top: 0px;
-	padding: 20px;
+  width: 950;
+  height: 400;
+  border: 2px;
+  position: fixed;
+  top: 0px;
+  padding: 20px;
 }
 
 .forecast_div{
-	width: 950px;
-	height: 700px;
-	border: 2px solid black;
-	resize: both;
-	text-align: center;
-	overflow: auto;
+  width: 950px;
+  height: 700px;
+  border: 2px solid black;
+  resize: both;
+  text-align: center;
+  overflow: auto;
 }
 
 .period_forecast_div{
-	width:100px;
-	height:250px;
-	float:left;
-	background:white;
-	border: 2px solid black;
-	margin-left: 10px;
-	margin-right: 0px;
-	margin-bottom: 20px;
-	margin-top: 10px;
-	resize: both;
-	display: inline-block;
-	position: relative;
+  width:100px;
+  height:250px;
+  float:left;
+  background:white;
+  border: 2px solid black;
+  margin-left: 10px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  resize: both;
+  display: inline-block;
+  position: relative;
 }
 
 .roads{
-	width: 950px;
-	resize: both;
-	border: 2px solid black;
+  width: 950px;
+  resize: both;
+  border: 2px solid black;
 }
 
 .high{
-	color: #F90202;
-	width:92px;
-	height:20px;
-	float:center;
-	background:white;
-	margin-bottom: 0px;
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-	resize: both;
-	display: inline-block;
+  color: #F90202;
+  width:92px;
+  height:20px;
+  float:center;
+  background:white;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  resize: both;
+  display: inline-block;
 
 }
 
 .low{
-	color: #2568D0;
+  color: #2568D0;
 }
 
 .image{
-	width:92px;
-	height:50px;
-	float:center;
-	background:white;
-	margin-bottom: 70px;
-	margin-top: 40px;
-	margin-left: 5px;
-	margin-right: 5px;
-	resize: both;
-	display: inline-block;
+  width:92px;
+  height:50px;
+  float:center;
+  background:white;
+  margin-bottom: 70px;
+  margin-top: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+  resize: both;
+  display: inline-block;
 }
 
 .road-name{
-	padding-left: 40px;
+  padding-left: 40px;
 
 }
 
@@ -103,30 +103,33 @@
 <div id='base_div' class='base_div'>
 
   <div id='forecast_div' class='forecast_div'>
-  	<h1 align="center">Four Day Weather Outlook</h1>
-<% @forecasts.each do |forecast| %>
-<h1><%= forecast.city %></h1>
-  	<% forecast.periods.each_with_index do |period, i| %>
-    <div id='period<%= i %>_forecast_div' class='period_forecast_div'>
-    <div style="min-height:50px;margin-top:15px"><%= period[:name].capitalize %></div>
-      <span class='image'> <%= image_tag(period[:icon], alt: "Weather Image") %></span><br>
-      <span class='<%= period[:type] %>'><%= period[:temp] %></span>
-    </div>
+    <h1 align="center">Four Day Weather Outlook</h1>
+    <% @forecasts.each do |forecast| %>
+      <h1><%= forecast.city %></h1>
+      <% forecast.periods.each_with_index do |period, i| %>
+        <div id='period<%= i %>_forecast_div' class='period_forecast_div'>
+          <div style="min-height:50px;margin-top:15px"><%= period[:name].capitalize %></div>
+          <span class='image'> <%= image_tag(period[:icon], alt: "Weather Image") %></span><br />
+          <span class='<%= period[:type] %>'><%= period[:temp] %></span>
+        </div>
+      <% end %>
+      <hr />
+    <% end %>    
+    <% if @roads.length < 4 %>
+      <%= link_to "Select Another Forecast", weather_path %>
     <% end %>
-    <hr>
-<% end %>
-
   </div>
+
   <div id='roads' class='roads'>
-  	<h1 align="center">Roads</h1>
-  	<% @roads.each do |road| %>
-  	  <h2 class="road-name"><%= road.split("<br>")[1] %> </h2>
-  	  <span><%= road.html_safe %></span>
-  	  <hr>
-  	<% end %>
-  	<% if @roads.length < 4 %>
-  		<%= link_to "Select Another Road", roads_path %>
-  	<% end %>
+    <h1 align="center">Roads</h1>
+    <% @roads.each do |road| %>
+      <h2 class="road-name"><%= road.split("<br>")[1] %> </h2>
+      <span><%= road.html_safe %></span>
+      <hr />
+    <% end %>
+    <% if @roads.length < 4 %>
+      <%= link_to "Select Another Road", roads_path %>
+    <% end %>
   </div>
 
 </div>
