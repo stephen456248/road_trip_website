@@ -48,6 +48,8 @@ class PagesController < ApplicationController
     google_params = "address=" + params["city"].gsub(" ", "%20") + "&" +
                     "key=" + geocoding_api_key
     @geo = HTTParty.get(google_url + google_params, verify: false)
+    puts "=========================================================="
+    puts @geo.inspect
     @geo.parsed_response
   end
 
