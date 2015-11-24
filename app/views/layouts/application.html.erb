@@ -16,6 +16,8 @@
    	<%= link_to "Clear Data", destroy_session_path %>
   </div>
 
+  <div id="flash" style="color: red; font-size: 18pt" ><%= flash[:notice]%></div>
+
 <%= yield %>
 
 </body>

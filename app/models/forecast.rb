@@ -3,6 +3,8 @@ class Forecast
   def initialize(weather, city)
     @city = city
     @weather = weather
+    puts "==========================================================="
+    puts @weather.inspect
     @parameters = @weather["dwml"]["data"]["parameters"]
     @highs = Array(@parameters["temperature"][0]["value"])
     @lows = Array(@parameters["temperature"][1]["value"])
